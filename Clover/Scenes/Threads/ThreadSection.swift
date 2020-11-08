@@ -29,5 +29,7 @@ let dataSource = RxTableViewSectionedReloadDataSource<ThreadSection>(
         let viewModel = PostCellViewModel(post: item)
         cell.setup(viewModel: viewModel)
         return cell
+    },titleForHeaderInSection: { dataSource, index in
+        return dataSource.sectionModels[index].header
     }
 )

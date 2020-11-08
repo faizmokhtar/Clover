@@ -12,7 +12,7 @@ import RxCocoa
 class ThreadsViewController: UIViewController {
 
     private lazy var tableView: UITableView = {
-        let tableView = UITableView()
+        let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(PostCell.self, forCellReuseIdentifier: "PostCell")
         tableView.rowHeight = UITableView.automaticDimension

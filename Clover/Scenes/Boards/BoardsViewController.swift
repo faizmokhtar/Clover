@@ -66,6 +66,8 @@ class BoardsViewController: UIViewController {
     }
     
     func setupUI() {
+        title = "Boards"
+
         view.addSubview(tableView)
         
         NSLayoutConstraint.activate([
