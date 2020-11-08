@@ -28,11 +28,14 @@ class ThreadsViewModel {
     func fetchThreads(page: Int = 1) {
         service.fetchThreads(board: board, page: page)
             .map({ $0.threads })
-            .reduce([ThreadSection](), accumulator: { section, threads in
-                section + [ThreadSection(header: "", items: threads)]
+            .flatMap({ Observable.from($0) })
+            .map({ $0.posts })
+            .reduce([ThreadSection](), accumulator: { section, posts in
+                section + [ThreadSection(header: "", items: posts)]
             })
             .subscribe(onNext: { [weak self] threads in
                 guard let self = self else { return }
+                print(threads)
                 self.sections.accept(threads)
             })
             .disposed(by: bag)

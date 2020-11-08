@@ -15,7 +15,7 @@ struct ThreadSection {
 }
 
 extension ThreadSection: SectionModelType {
-    typealias Item = Thread
+    typealias Item = Post
     
     init(original: ThreadSection, items: [Item]) {
         self = original
@@ -25,9 +25,8 @@ extension ThreadSection: SectionModelType {
 
 let dataSource = RxTableViewSectionedReloadDataSource<ThreadSection>(
     configureCell: { dataSource, tableView, indexPath, item in
-        guard let post = item.posts.item(at: indexPath.row) else { return UITableViewCell() }
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
-        let viewModel = PostCellViewModel(post: post)
+        let viewModel = PostCellViewModel(post: item)
         cell.setup(viewModel: viewModel)
         return cell
     }
