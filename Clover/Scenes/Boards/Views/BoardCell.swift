@@ -40,16 +40,13 @@ class BoardCell: UITableViewCell {
     
     func setup(viewModel: BoardCellViewModel) {
         self.viewModel = viewModel
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            self.titleLabel.text = viewModel.title
-            self.subtitleText.attributedText = viewModel.subtitle.htmlAttributedString(size: 16, color: .systemGray)
-            self.subtitleText.invalidateIntrinsicContentSize()
-            self.subtitleText.layoutIfNeeded()
-        }
+        self.titleLabel.text = viewModel.title
+        self.subtitleText.attributedText = viewModel.subtitle.htmlAttributedString(size: 16, color: .systemGray)
+        self.subtitleText.setNeedsDisplay()
     }
     
     private func setupUI() {
+        selectionStyle = .none
         contentView.addSubview(titleLabel)
         contentView.addSubview(subtitleText)
         
