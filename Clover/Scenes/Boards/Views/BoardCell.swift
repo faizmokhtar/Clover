@@ -41,7 +41,7 @@ class BoardCell: UITableViewCell {
     func setup(viewModel: BoardCellViewModel) {
         self.viewModel = viewModel
         self.titleLabel.text = viewModel.title
-        self.subtitleText.attributedText = viewModel.subtitle.htmlAttributedString(size: 16, color: .systemGray)
+        self.subtitleText.attributedText = viewModel.subtitle.htmlAttributedString(size: 16)
         self.subtitleText.setNeedsDisplay()
     }
     

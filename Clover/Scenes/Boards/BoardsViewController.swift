@@ -54,9 +54,20 @@ class BoardsViewController: UIViewController {
                 .disposed(by: self.bag)
         }
     
+        tableView.rx.modelSelected(Board.self)
+            .asDriver()
+            .drive(onNext: { [weak self] element in
+                print(element)
+                let viewModel = ThreadsViewModel(board: element)
+                let viewController = ThreadsViewController(viewModel: viewModel)
+                self?.navigationController?.pushViewController(viewController, animated: true)
+            })
+            .disposed(by: bag)
     }
     
     func setupUI() {
+        title = "Boards"
+
         view.addSubview(tableView)
         
         NSLayoutConstraint.activate([
