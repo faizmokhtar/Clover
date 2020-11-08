@@ -21,7 +21,7 @@ struct Thread: Codable {
 struct Post: Codable {
     let no: Int
     let now: String
-    let name: Name?
+    let name: String?
     let com: String?
     let filename: String?
     let ext: EXT?
@@ -55,11 +55,4 @@ enum EXT: String, Codable {
     case png = ".png"
     case gif = ".gif"
     case webm = ".webm"
-}
-
-enum Name: String, Codable {
-    case anonymous = "Anonymous"
-    case help = "help"
-    case j = "J."
-    case qMatlock = "Q@Matlock"
 }
