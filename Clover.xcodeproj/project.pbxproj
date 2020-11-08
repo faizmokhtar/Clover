@@ -18,6 +18,9 @@
 		9CEAEFBD2557F7DE0072ECF8 /* CloverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAEFBC2557F7DE0072ECF8 /* CloverTests.swift */; };
 		9CEAEFC82557F7DE0072ECF8 /* CloverUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAEFC72557F7DE0072ECF8 /* CloverUITests.swift */; };
 		9CEAEFEC2557FC4E0072ECF8 /* Boards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAEFEB2557FC4E0072ECF8 /* Boards.swift */; };
+		9CEAEFF32557FD490072ECF8 /* BoardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAEFF22557FD490072ECF8 /* BoardsViewController.swift */; };
+		9CEAEFFB2557FD600072ECF8 /* BoardsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAEFFA2557FD600072ECF8 /* BoardsViewModel.swift */; };
+		9CEAF0012557FDD00072ECF8 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAF0002557FDD00072ECF8 /* APIService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +64,9 @@
 		9CEAEFC72557F7DE0072ECF8 /* CloverUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloverUITests.swift; sourceTree = "<group>"; };
 		9CEAEFC92557F7DE0072ECF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9CEAEFEB2557FC4E0072ECF8 /* Boards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boards.swift; sourceTree = "<group>"; };
+		9CEAEFF22557FD490072ECF8 /* BoardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardsViewController.swift; sourceTree = "<group>"; };
+		9CEAEFFA2557FD600072ECF8 /* BoardsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardsViewModel.swift; sourceTree = "<group>"; };
+		9CEAF0002557FDD00072ECF8 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +135,8 @@
 		9CEAEFA42557F7DD0072ECF8 /* Clover */ = {
 			isa = PBXGroup;
 			children = (
+				9CEAEFFF2557FDC10072ECF8 /* Services */,
+				9CEAEFF02557FD160072ECF8 /* Scenes */,
 				9CEAEFE92557FC390072ECF8 /* Models */,
 				9CEAEFA52557F7DD0072ECF8 /* AppDelegate.swift */,
 				9CEAEFA72557F7DD0072ECF8 /* SceneDelegate.swift */,
@@ -172,6 +180,31 @@
 				9CEAEFEB2557FC4E0072ECF8 /* Boards.swift */,
 			);
 			path = Boards;
+			sourceTree = "<group>";
+		};
+		9CEAEFF02557FD160072ECF8 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				9CEAEFF12557FD250072ECF8 /* Boards */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		9CEAEFF12557FD250072ECF8 /* Boards */ = {
+			isa = PBXGroup;
+			children = (
+				9CEAEFF22557FD490072ECF8 /* BoardsViewController.swift */,
+				9CEAEFFA2557FD600072ECF8 /* BoardsViewModel.swift */,
+			);
+			path = Boards;
+			sourceTree = "<group>";
+		};
+		9CEAEFFF2557FDC10072ECF8 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9CEAF0002557FDD00072ECF8 /* APIService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		F08D989654CBE43C36172A01 /* Frameworks */ = {
@@ -422,8 +455,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CEAEFAA2557F7DD0072ECF8 /* ViewController.swift in Sources */,
+				9CEAF0012557FDD00072ECF8 /* APIService.swift in Sources */,
 				9CEAEFA62557F7DD0072ECF8 /* AppDelegate.swift in Sources */,
 				9CEAEFEC2557FC4E0072ECF8 /* Boards.swift in Sources */,
+				9CEAEFFB2557FD600072ECF8 /* BoardsViewModel.swift in Sources */,
+				9CEAEFF32557FD490072ECF8 /* BoardsViewController.swift in Sources */,
 				9CEAEFA82557F7DD0072ECF8 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
