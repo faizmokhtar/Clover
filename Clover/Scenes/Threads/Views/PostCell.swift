@@ -32,7 +32,7 @@ class PostCell: UITableViewCell {
     
     func setup(viewModel: PostCellViewModel) {
         self.viewModel = viewModel
-        self.contentText.attributedText = viewModel.text?.htmlAttributedString(size: 16, color: .black)
+        self.contentText.attributedText = viewModel.text?.htmlAttributedString(size: 16)
         self.contentText.setNeedsDisplay()
     }
     

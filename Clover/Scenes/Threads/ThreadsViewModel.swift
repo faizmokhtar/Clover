@@ -12,6 +12,7 @@ import RxCocoa
 class ThreadsViewModel {
     
     var threads: BehaviorRelay<[Thread]> = BehaviorRelay<[Thread]>(value: [])
+    var sections: BehaviorRelay<[ThreadSection]> = BehaviorRelay<[ThreadSection]>(value: [])
 
     private let service: APIServiceable
     private let board: String
@@ -26,9 +27,13 @@ class ThreadsViewModel {
     
     func fetchThreads(page: Int = 1) {
         service.fetchThreads(board: board, page: page)
+            .map({ $0.threads })
+            .reduce([ThreadSection](), accumulator: { section, threads in
+                section + [ThreadSection(header: "", items: threads)]
+            })
             .subscribe(onNext: { [weak self] threads in
                 guard let self = self else { return }
-                self.threads.accept(threads.threads)
+                self.sections.accept(threads)
             })
             .disposed(by: bag)
     }

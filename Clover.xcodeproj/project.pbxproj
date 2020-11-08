@@ -29,6 +29,8 @@
 		9CEAF05A25581DBF0072ECF8 /* ThreadsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAF05925581DBF0072ECF8 /* ThreadsViewModel.swift */; };
 		9CEAF060255822240072ECF8 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAF05F255822240072ECF8 /* PostCell.swift */; };
 		9CEAF065255822460072ECF8 /* PostCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAF064255822460072ECF8 /* PostCellViewModel.swift */; };
+		9CEAF07725582DF00072ECF8 /* ThreadSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAF07625582DF00072ECF8 /* ThreadSection.swift */; };
+		9CEAF07C255847F70072ECF8 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAF07B255847F70072ECF8 /* Array+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,8 @@
 		9CEAF05925581DBF0072ECF8 /* ThreadsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadsViewModel.swift; sourceTree = "<group>"; };
 		9CEAF05F255822240072ECF8 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		9CEAF064255822460072ECF8 /* PostCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCellViewModel.swift; sourceTree = "<group>"; };
+		9CEAF07625582DF00072ECF8 /* ThreadSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadSection.swift; sourceTree = "<group>"; };
+		9CEAF07B255847F70072ECF8 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +244,7 @@
 			children = (
 				9CEAF01725580CC80072ECF8 /* UIColor+Extensions.swift */,
 				9CEAF01C25580CF70072ECF8 /* String+Extensions.swift */,
+				9CEAF07B255847F70072ECF8 /* Array+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -250,6 +255,7 @@
 				9CEAF05E255822080072ECF8 /* Views */,
 				9CEAF05425581DB20072ECF8 /* ThreadsViewController.swift */,
 				9CEAF05925581DBF0072ECF8 /* ThreadsViewModel.swift */,
+				9CEAF07625582DF00072ECF8 /* ThreadSection.swift */,
 			);
 			path = Threads;
 			sourceTree = "<group>";
@@ -528,7 +534,9 @@
 				9CEAF060255822240072ECF8 /* PostCell.swift in Sources */,
 				9CEAF065255822460072ECF8 /* PostCellViewModel.swift in Sources */,
 				9CEAF05A25581DBF0072ECF8 /* ThreadsViewModel.swift in Sources */,
+				9CEAF07C255847F70072ECF8 /* Array+Extensions.swift in Sources */,
 				9CEAEFF32557FD490072ECF8 /* BoardsViewController.swift in Sources */,
+				9CEAF07725582DF00072ECF8 /* ThreadSection.swift in Sources */,
 				9CEAF00A255805BB0072ECF8 /* BoardCell.swift in Sources */,
 				9CEAEFA82557F7DD0072ECF8 /* SceneDelegate.swift in Sources */,
 				9CEAF01825580CC80072ECF8 /* UIColor+Extensions.swift in Sources */,

@@ -53,6 +53,7 @@ enum EXT: String, Codable {
     case jpg = ".jpg"
     case pdf = ".pdf"
     case png = ".png"
+    case gif = ".gif"
 }
 
 enum Name: String, Codable {

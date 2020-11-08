@@ -14,7 +14,7 @@ class ThreadsViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(BoardCell.self, forCellReuseIdentifier: "BoardCell")
+        tableView.register(PostCell.self, forCellReuseIdentifier: "PostCell")
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 200
         return tableView
@@ -23,7 +23,7 @@ class ThreadsViewController: UIViewController {
     private let bag: DisposeBag = DisposeBag()
 
     private let viewModel: ThreadsViewModel
-
+    
     init(viewModel: ThreadsViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -41,16 +41,9 @@ class ThreadsViewController: UIViewController {
     }
     
     private func setupBindings() {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            self.viewModel.threads
-                .asDriver()
-                .drive(self.tableView.rx.items) { tableView, index, element in
-                    let cell: PostCell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostCell
-                    return cell
-                }
+            self.viewModel.sections
+                .bind(to: self.tableView.rx.items(dataSource: dataSource))
                 .disposed(by: self.bag)
-        }
     }
     
     private func setupUI() {

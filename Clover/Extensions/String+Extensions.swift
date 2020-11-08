@@ -9,14 +9,14 @@ import Foundation
 import UIKit
 
 extension String {
-    func htmlAttributedString(size: CGFloat, color: UIColor) -> NSAttributedString? {
+    func htmlAttributedString(size: CGFloat) -> NSAttributedString? {
         let htmlTemplate = """
         <!doctype html>
         <html>
           <head>
             <style>
               body {
-                color: \(color.hexString!);
+                color: \("#333333");
                 font-family: -apple-system;
                 font-size: \(size)px;
               }
