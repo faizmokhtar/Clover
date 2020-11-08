@@ -47,6 +47,8 @@ class ThreadsViewController: UIViewController {
     }
     
     private func setupUI() {
+        title = viewModel.title
+
         view.addSubview(tableView)
         
         NSLayoutConstraint.activate([

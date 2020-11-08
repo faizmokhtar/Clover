@@ -58,7 +58,7 @@ class BoardsViewController: UIViewController {
             .asDriver()
             .drive(onNext: { [weak self] element in
                 print(element)
-                let viewModel = ThreadsViewModel(board: element.board)
+                let viewModel = ThreadsViewModel(board: element)
                 let viewController = ThreadsViewController(viewModel: viewModel)
                 self?.navigationController?.pushViewController(viewController, animated: true)
             })
