@@ -6,8 +6,21 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class BoardsViewController: UIViewController {
+
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.register(BoardCell.self, forCellReuseIdentifier: "BoardCell")
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 200
+        return tableView
+    }()
+    
+    private let bag: DisposeBag = DisposeBag()
 
     let viewModel: BoardsViewModel
     
@@ -22,6 +35,35 @@ class BoardsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+        setupBindings()
         viewModel.fetchBoards()
+    }
+    
+    func setupBindings() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.viewModel.boards
+                .asDriver()
+                .drive(self.tableView.rx.items) { tableView, index, element in
+                    let cell: BoardCell = tableView.dequeueReusableCell(withIdentifier: "BoardCell") as! BoardCell
+                    let viewModel = BoardCellViewModel(board: element)
+                    cell.setup(viewModel: viewModel)
+                    return cell
+                }
+                .disposed(by: self.bag)
+        }
+    
+    }
+    
+    func setupUI() {
+        view.addSubview(tableView)
+        
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
     }
 }

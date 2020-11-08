@@ -20,6 +20,10 @@
 		9CEAEFF32557FD490072ECF8 /* BoardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAEFF22557FD490072ECF8 /* BoardsViewController.swift */; };
 		9CEAEFFB2557FD600072ECF8 /* BoardsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAEFFA2557FD600072ECF8 /* BoardsViewModel.swift */; };
 		9CEAF0012557FDD00072ECF8 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAF0002557FDD00072ECF8 /* APIService.swift */; };
+		9CEAF00A255805BB0072ECF8 /* BoardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAF009255805BB0072ECF8 /* BoardCell.swift */; };
+		9CEAF012255806130072ECF8 /* BoardCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAF011255806130072ECF8 /* BoardCellViewModel.swift */; };
+		9CEAF01825580CC80072ECF8 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAF01725580CC80072ECF8 /* UIColor+Extensions.swift */; };
+		9CEAF01D25580CF70072ECF8 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAF01C25580CF70072ECF8 /* String+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +69,10 @@
 		9CEAEFF22557FD490072ECF8 /* BoardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardsViewController.swift; sourceTree = "<group>"; };
 		9CEAEFFA2557FD600072ECF8 /* BoardsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardsViewModel.swift; sourceTree = "<group>"; };
 		9CEAF0002557FDD00072ECF8 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		9CEAF009255805BB0072ECF8 /* BoardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCell.swift; sourceTree = "<group>"; };
+		9CEAF011255806130072ECF8 /* BoardCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCellViewModel.swift; sourceTree = "<group>"; };
+		9CEAF01725580CC80072ECF8 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		9CEAF01C25580CF70072ECF8 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +146,7 @@
 				9CEAEFE92557FC390072ECF8 /* Models */,
 				9CEAEFA52557F7DD0072ECF8 /* AppDelegate.swift */,
 				9CEAEFA72557F7DD0072ECF8 /* SceneDelegate.swift */,
+				9CEAF01625580CB00072ECF8 /* Extensions */,
 				9CEAEFAE2557F7DE0072ECF8 /* Assets.xcassets */,
 				9CEAEFB02557F7DE0072ECF8 /* LaunchScreen.storyboard */,
 				9CEAEFB32557F7DE0072ECF8 /* Info.plist */,
@@ -190,6 +199,7 @@
 		9CEAEFF12557FD250072ECF8 /* Boards */ = {
 			isa = PBXGroup;
 			children = (
+				9CEAF008255805A40072ECF8 /* Views */,
 				9CEAEFF22557FD490072ECF8 /* BoardsViewController.swift */,
 				9CEAEFFA2557FD600072ECF8 /* BoardsViewModel.swift */,
 			);
@@ -202,6 +212,24 @@
 				9CEAF0002557FDD00072ECF8 /* APIService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		9CEAF008255805A40072ECF8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9CEAF009255805BB0072ECF8 /* BoardCell.swift */,
+				9CEAF011255806130072ECF8 /* BoardCellViewModel.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9CEAF01625580CB00072ECF8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9CEAF01725580CC80072ECF8 /* UIColor+Extensions.swift */,
+				9CEAF01C25580CF70072ECF8 /* String+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		F08D989654CBE43C36172A01 /* Frameworks */ = {
@@ -451,12 +479,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CEAF01D25580CF70072ECF8 /* String+Extensions.swift in Sources */,
 				9CEAF0012557FDD00072ECF8 /* APIService.swift in Sources */,
 				9CEAEFA62557F7DD0072ECF8 /* AppDelegate.swift in Sources */,
 				9CEAEFEC2557FC4E0072ECF8 /* Boards.swift in Sources */,
 				9CEAEFFB2557FD600072ECF8 /* BoardsViewModel.swift in Sources */,
 				9CEAEFF32557FD490072ECF8 /* BoardsViewController.swift in Sources */,
+				9CEAF00A255805BB0072ECF8 /* BoardCell.swift in Sources */,
 				9CEAEFA82557F7DD0072ECF8 /* SceneDelegate.swift in Sources */,
+				9CEAF01825580CC80072ECF8 /* UIColor+Extensions.swift in Sources */,
+				9CEAF012255806130072ECF8 /* BoardCellViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
