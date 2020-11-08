@@ -12,6 +12,8 @@ import Alamofire
 
 protocol APIServiceable {
     func fetchBoards() -> Observable<Boards>
+    
+    func fetchThreads(board: String, page: Int) -> Observable<Threads>
 }
 
 class APIService: APIServiceable {
@@ -27,6 +29,18 @@ class APIService: APIServiceable {
             .responseData()
             .map { _, data in
                 return try JSONDecoder().decode(Boards.self, from: data)
+            }
+            .asObservable()
+    }
+    
+    func fetchThreads(board: String, page: Int) -> Observable<Threads> {
+        let url = "\(baseURL)\(board)/\(page).json"
+        
+        return session.rx.request(.get, url)
+            .debug()
+            .responseData()
+            .map { _, data in
+                return try JSONDecoder().decode(Threads.self, from: data)
             }
             .asObservable()
     }

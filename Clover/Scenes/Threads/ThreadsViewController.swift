@@ -1,5 +1,5 @@
 //
-//  BoardsViewController.swift
+//  ThreadsViewController.swift
 //  Clover
 //
 //  Created by Faiz Mokhtar AD0502 on 08/11/2020.
@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class BoardsViewController: UIViewController {
+class ThreadsViewController: UIViewController {
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -22,9 +22,9 @@ class BoardsViewController: UIViewController {
     
     private let bag: DisposeBag = DisposeBag()
 
-    let viewModel: BoardsViewModel
-    
-    init(viewModel: BoardsViewModel = BoardsViewModel()) {
+    private let viewModel: ThreadsViewModel
+
+    init(viewModel: ThreadsViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -32,40 +32,28 @@ class BoardsViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setupBindings()
-        viewModel.fetchBoards()
+        viewModel.fetchThreads(page: 1)
     }
     
-    func setupBindings() {
+    private func setupBindings() {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-            self.viewModel.boards
+            self.viewModel.threads
                 .asDriver()
                 .drive(self.tableView.rx.items) { tableView, index, element in
-                    let cell: BoardCell = tableView.dequeueReusableCell(withIdentifier: "BoardCell") as! BoardCell
-                    let viewModel = BoardCellViewModel(board: element)
-                    cell.setup(viewModel: viewModel)
+                    let cell: PostCell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostCell
                     return cell
                 }
                 .disposed(by: self.bag)
         }
-    
-        tableView.rx.modelSelected(Board.self)
-            .asDriver()
-            .drive(onNext: { [weak self] element in
-                print(element)
-                let viewModel = ThreadsViewModel(board: element.board)
-                let viewController = ThreadsViewController(viewModel: viewModel)
-                self?.navigationController?.pushViewController(viewController, animated: true)
-            })
-            .disposed(by: bag)
     }
     
-    func setupUI() {
+    private func setupUI() {
         view.addSubview(tableView)
         
         NSLayoutConstraint.activate([
