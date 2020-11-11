@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxDataSources
 
 class ThreadsViewController: UIViewController {
 
@@ -20,6 +21,18 @@ class ThreadsViewController: UIViewController {
         return tableView
     }()
     
+    let dataSource = RxTableViewSectionedReloadDataSource<ThreadSection>(
+        configureCell: { dataSource, tableView, indexPath, item in
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
+            let board = dataSource.sectionModels[indexPath.row].board
+            let viewModel = PostCellViewModel(post: item, board: board)
+            cell.setup(viewModel: viewModel)
+            return cell
+        },titleForHeaderInSection: { dataSource, index in
+            return dataSource.sectionModels[index].header
+        }
+    )
+
     private let bag: DisposeBag = DisposeBag()
 
     private let viewModel: ThreadsViewModel

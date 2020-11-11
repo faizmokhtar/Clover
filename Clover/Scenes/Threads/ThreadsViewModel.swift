@@ -35,7 +35,7 @@ class ThreadsViewModel {
             .flatMap({ Observable.from($0) })
             .map({ $0.posts })
             .reduce([ThreadSection](), accumulator: { section, posts in
-                section + [ThreadSection(header: "\(posts.first?.name ?? "") \(posts.first?.now ?? "") )", items: posts)]
+                section + [ThreadSection(header: "\(posts.first?.name ?? "") \(posts.first?.now ?? "") )", board: self.board, items: posts)]
             })
             .subscribe(onNext: { [weak self] threads in
                 guard let self = self else { return }

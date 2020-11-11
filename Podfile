@@ -11,6 +11,7 @@ target 'Clover' do
   pod 'RxDataSources'
   pod 'RxAlamofire'
   pod 'Alamofire'
+  pod 'Kingfisher'
 
   target 'CloverTests' do
     inherit! :search_paths
