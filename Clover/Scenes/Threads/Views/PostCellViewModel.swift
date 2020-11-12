@@ -16,6 +16,11 @@ class PostCellViewModel {
 
     let thumbnailHeight: CGFloat
     let thumbnailWidth: CGFloat
+    
+    var imageUrl: URL? {
+        guard let thumbnail = thumbnailName else { return nil }
+        return URL(string: "https://i.4cdn.org/\(board)/\(thumbnail)s.jpg")
+    }
         
     init(post: Post, board: Board) {
         self.text = post.com
@@ -25,8 +30,4 @@ class PostCellViewModel {
         self.thumbnailWidth = CGFloat(post.tnW ?? 0)
     }
     
-    func image() -> URL? {
-        guard let thumbnail = thumbnailName else { return nil }
-        return URL(string: "https://i.4cdn.org/\(board)/\(thumbnail)s.jpg")
-    }
 }

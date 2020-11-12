@@ -20,7 +20,7 @@ class PostCell: UITableViewCell {
         return label
     }()
     
-    private lazy var thumbnailImageView: UIImageView = {
+    lazy var thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = .gray
@@ -43,7 +43,7 @@ class PostCell: UITableViewCell {
         self.viewModel = viewModel
         self.contentText.attributedText = viewModel.text?.htmlAttributedString(size: 16)
         self.contentText.setNeedsDisplay()
-        self.thumbnailImageView.kf.setImage(with: viewModel.image())
+        self.thumbnailImageView.kf.setImage(with: viewModel.imageUrl)
         self.thumbnailImageView.layoutIfNeeded()
         
         NSLayoutConstraint.activate([
