@@ -21,14 +21,12 @@ class PostCell: UITableViewCell {
     }()
     
     private lazy var thumbnailImageView: UIImageView = {
-        let imageView = UIImageView(frame: .zero)
+        let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.backgroundColor = .gray
         return imageView
     }()
     
-    private var thumbnailHeightConstraint: NSLayoutConstraint!
-    private var thumbnailWidthConstraint: NSLayoutConstraint!
-
     private var viewModel: PostCellViewModel?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -46,32 +44,32 @@ class PostCell: UITableViewCell {
         self.contentText.attributedText = viewModel.text?.htmlAttributedString(size: 16)
         self.contentText.setNeedsDisplay()
         self.thumbnailImageView.kf.setImage(with: viewModel.image())
-        self.thumbnailImageView.setNeedsDisplay()
+        self.thumbnailImageView.layoutIfNeeded()
         
-        self.thumbnailHeightConstraint.constant = viewModel.thumbnailHeight
-        self.thumbnailWidthConstraint.constant = viewModel.thumbnailWidth
+        NSLayoutConstraint.activate([
+            thumbnailImageView.heightAnchor.constraint(equalToConstant: viewModel.thumbnailHeight),
+            thumbnailImageView.widthAnchor.constraint(equalToConstant: viewModel.thumbnailWidth)
+        ])
+        
+        let exclusionPath = UIBezierPath(rect: CGRect(x: 10, y: 10, width: viewModel.thumbnailWidth + 5, height: viewModel.thumbnailHeight + 5))
+        self.contentText.textContainer.exclusionPaths = [exclusionPath]
         self.contentView.layoutIfNeeded()
     }
     
     private func setupUI() {
         selectionStyle = .none
-        contentView.addSubview(thumbnailImageView)
         contentView.addSubview(contentText)
-        
-        thumbnailWidthConstraint = thumbnailImageView.widthAnchor.constraint(equalToConstant:120)
-        thumbnailHeightConstraint = thumbnailImageView.heightAnchor.constraint(equalToConstant: 120)
+        contentView.addSubview(thumbnailImageView)
 
         NSLayoutConstraint.activate([
             thumbnailImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            thumbnailImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
-            thumbnailImageView.trailingAnchor.constraint(equalTo: thumbnailImageView.leadingAnchor, constant: -5),
-            thumbnailHeightConstraint,
-            thumbnailWidthConstraint,
+            thumbnailImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             thumbnailImageView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -10),
 
+            contentText.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            contentText.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
             contentText.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            contentText.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
-            contentText.bottomAnchor.constraint(greaterThanOrEqualTo: contentView.bottomAnchor, constant: -10)
+            contentText.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
         ])
     }
 }
